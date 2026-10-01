@@ -1,0 +1,143 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "" } = Astro.props;
+
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "History & Heritage", href: "/history" },
+  { name: "Roll of Honour", href: "/roll-of-honour" },
+  { name: "Hall Hire", href: "/hall-hire" },
+  { name: "Members Portal", href: "/members" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-[#F9F9FB]/95 backdrop-blur-md border-b border-[#E4E4E8] transition-all">
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#141417] text-[#FAF9F6] text-xs py-2 px-4 text-center tracking-wide flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-[#C85A17] animate-pulse"></span>
+    <span class="font-medium">Templepatrick War Memorial Orange Hall</span>
+    <span class="hidden md:inline text-gray-400">•</span>
+    <span class="hidden md:inline text-gray-300">Regular Lodge Meetings: 1st Tuesday of every month</span>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo / Emblem -->
+      <a href="/" class="group flex items-center gap-3 py-2">
+        <div class="w-10 h-10 rounded-sm bg-[#1A1A1E] text-white flex items-center justify-center font-serif font-bold text-lg border border-[#C85A17] group-hover:bg-[#C85A17] transition-all duration-300 shadow-sm">
+          466
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-lg md:text-xl font-bold tracking-tight text-[#1A1A1E] group-hover:text-[#C85A17] transition-colors">
+            Templepatrick L.O.L.
+          </span>
+          <span class="text-[10px] uppercase tracking-widest text-[#5A5A62] font-semibold">
+            District No. 466 • County Antrim
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-1 border-l border-[#E4E4E8] pl-6 py-1">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class={`px-4 py-2 text-sm font-medium transition-all relative rounded-md ${
+                isActive
+                  ? 'text-[#C85A17] font-semibold bg-[#FDF6F0]'
+                  : 'text-[#1A1A1E] hover:text-[#C85A17] hover:bg-[#F0F0F4]'
+              }`}
+            >
+              {item.name}
+              {isActive && (
+                <span class="absolute bottom-0 left-4 right-4 h-0.5 bg-[#C85A17] rounded-full"></span>
+              )}
+            </a>
+          );
+        })}
+        <a
+          href="/hall-hire#booking-section"
+          class="ml-4 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#C85A17] hover:bg-[#A64710] rounded transition-all shadow-sm flex items-center gap-1.5"
+        >
+          <span>Book Hall</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="lg:hidden flex items-center">
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="p-2.5 text-[#1A1A1E] hover:text-[#C85A17] hover:bg-[#F0F0F4] rounded-md transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-[#F9F9FB] border-b border-[#E4E4E8] px-4 pt-2 pb-6 space-y-2 shadow-lg">
+    {navItems.map((item) => {
+      const isActive = currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href));
+      return (
+        <a
+          href={item.href}
+          class={`block px-4 py-3 rounded-md text-base font-medium transition-colors ${
+            isActive
+              ? 'text-[#C85A17] bg-[#FDF6F0] font-semibold border-l-4 border-[#C85A17]'
+              : 'text-[#1A1A1E] hover:bg-[#F0F0F4] hover:text-[#C85A17]'
+          }`}
+        >
+          {item.name}
+        </a>
+      );
+    })}
+    <div class="pt-2">
+      <a
+        href="/hall-hire#booking-section"
+        class="block w-full text-center px-4 py-3 text-sm font-semibold uppercase tracking-wider text-white bg-[#C85A17] hover:bg-[#A64710] rounded transition-colors shadow-sm"
+      >
+        Book Hall Facilities
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        openIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+        openIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+      }
+    });
+  }
+</script>

@@ -1,0 +1,191 @@
+---
+---
+
+<div class="bg-white border border-[#E4E4E8] rounded-lg p-6 md:p-10 shadow-sm" id="booking-section">
+  <div class="mb-8">
+    <div class="inline-block text-xs uppercase tracking-widest text-[#C85A17] font-semibold mb-2">
+      Facility Reservations
+    </div>
+    <h3 class="font-serif text-2xl md:text-3xl font-bold text-[#1A1A1E]">
+      Inquire About Hall Hire
+    </h3>
+    <p class="text-sm text-[#5A5A62] mt-1">
+      Complete the details below and our Hall Convenor will get back to you within 24 hours.
+    </p>
+  </div>
+
+  <form id="hall-booking-form" class="space-y-6">
+    <!-- Form Status Message -->
+    <div id="form-alert" class="hidden p-4 rounded-md text-sm font-medium"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Full Name -->
+      <div>
+        <label for="fullName" class="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1E] mb-2">
+          Full Name <span class="text-[#C85A17]">*</span>
+        </label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          required
+          placeholder="e.g. John Campbell"
+          class="w-full px-4 py-3 rounded border border-[#E4E4E8] bg-[#F9F9FB] text-sm text-[#1A1A1E] focus:outline-none focus:border-[#C85A17] focus:ring-1 focus:ring-[#C85A17] transition-all"
+        />
+      </div>
+
+      <!-- Email Address -->
+      <div>
+        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1E] mb-2">
+          Email Address <span class="text-[#C85A17]">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="john@example.com"
+          class="w-full px-4 py-3 rounded border border-[#E4E4E8] bg-[#F9F9FB] text-sm text-[#1A1A1E] focus:outline-none focus:border-[#C85A17] focus:ring-1 focus:ring-[#C85A17] transition-all"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Phone Number -->
+      <div>
+        <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1E] mb-2">
+          Contact Phone <span class="text-[#C85A17]">*</span>
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          placeholder="07700 900000"
+          class="w-full px-4 py-3 rounded border border-[#E4E4E8] bg-[#F9F9FB] text-sm text-[#1A1A1E] focus:outline-none focus:border-[#C85A17] focus:ring-1 focus:ring-[#C85A17] transition-all"
+        />
+      </div>
+
+      <!-- Event Type -->
+      <div>
+        <label for="eventType" class="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1E] mb-2">
+          Event Type <span class="text-[#C85A17]">*</span>
+        </label>
+        <select
+          id="eventType"
+          name="eventType"
+          required
+          class="w-full px-4 py-3 rounded border border-[#E4E4E8] bg-[#F9F9FB] text-sm text-[#1A1A1E] focus:outline-none focus:border-[#C85A17] focus:ring-1 focus:ring-[#C85A17] transition-all"
+        >
+          <option value="">Select event category...</option>
+          <option value="private-party">Private Celebration / Reception</option>
+          <option value="community-meeting">Community Group / Charity Meeting</option>
+          <option value="corporate-conference">Corporate / Business Function</option>
+          <option value="rehearsal-class">Cultural / Rehearsal Class</option>
+          <option value="other">Other Event</option>
+        </select>
+      </div>
+
+      <!-- Preferred Date -->
+      <div>
+        <label for="eventDate" class="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1E] mb-2">
+          Preferred Date <span class="text-[#C85A17]">*</span>
+        </label>
+        <input
+          type="date"
+          id="eventDate"
+          name="eventDate"
+          required
+          class="w-full px-4 py-3 rounded border border-[#E4E4E8] bg-[#F9F9FB] text-sm text-[#1A1A1E] focus:outline-none focus:border-[#C85A17] focus:ring-1 focus:ring-[#C85A17] transition-all"
+        />
+      </div>
+    </div>
+
+    <!-- Estimated Attendees -->
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <label for="attendees" class="text-xs font-semibold uppercase tracking-wider text-[#1A1A1E]">
+          Estimated Attendees
+        </label>
+        <span id="attendee-val" class="text-xs font-bold text-[#C85A17]">50 guests</span>
+      </div>
+      <input
+        type="range"
+        id="attendees"
+        name="attendees"
+        min="10"
+        max="220"
+        value="50"
+        class="w-full accent-[#C85A17] h-2 bg-[#E4E4E8] rounded cursor-pointer"
+      />
+      <div class="flex justify-between text-[10px] text-[#5A5A62] mt-1">
+        <span>Small Group (10)</span>
+        <span>Supper Room (50)</span>
+        <span>Main Hall (160)</span>
+        <span>Full Capacity (220)</span>
+      </div>
+    </div>
+
+    <!-- Additional Details -->
+    <div>
+      <label for="notes" class="block text-xs font-semibold uppercase tracking-wider text-[#1A1A1E] mb-2">
+        Special Requirements or Questions
+      </label>
+      <textarea
+        id="notes"
+        name="notes"
+        rows="4"
+        placeholder="Please mention catering needs, audio/visual requirements, or setup times..."
+        class="w-full px-4 py-3 rounded border border-[#E4E4E8] bg-[#F9F9FB] text-sm text-[#1A1A1E] focus:outline-none focus:border-[#C85A17] focus:ring-1 focus:ring-[#C85A17] transition-all"
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="pt-2">
+      <button
+        type="submit"
+        class="w-full md:w-auto px-8 py-3.5 bg-[#C85A17] hover:bg-[#A64710] text-white font-semibold uppercase tracking-wider text-xs rounded transition-all shadow-sm flex items-center justify-center gap-2"
+      >
+        <span>Submit Booking Inquiry</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const rangeInput = document.getElementById('attendees') as HTMLInputElement | null;
+  const rangeVal = document.getElementById('attendee-val');
+  const form = document.getElementById('hall-booking-form') as HTMLFormElement | null;
+  const alertBox = document.getElementById('form-alert');
+
+  if (rangeInput && rangeVal) {
+    rangeInput.addEventListener('input', (e) => {
+      const val = (e.target as HTMLInputElement).value;
+      rangeVal.textContent = `${val} guests`;
+    });
+  }
+
+  if (form && alertBox) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Simulate submission success
+      alertBox.className = 'p-4 rounded-md text-sm font-medium bg-[#FDF6F0] text-[#C85A17] border border-[#C85A17]/30 mb-6';
+      alertBox.innerHTML = `
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#C85A17]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <strong>Inquiry Received!</strong>
+        </div>
+        <p class="mt-1 text-xs text-[#1A1A1E]">Thank you for reaching out to Templepatrick War Memorial Hall. Our convenor will contact you shortly.</p>
+      `;
+      alertBox.classList.remove('hidden');
+      form.reset();
+      if (rangeVal) rangeVal.textContent = '50 guests';
+    });
+  }
+</script>

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --color-charcoal: #1A1A1E;
+  --color-charcoal-dark: #141417;
+  --color-charcoal-light: #2A2A30;
+  
+  --color-alabaster: #F9F9FB;
+  --color-alabaster-card: #FFFFFF;
+  
+  --color-burnt-orange: #C85A17;
+  --color-burnt-orange-hover: #A64710;
+  --color-burnt-orange-tint: #FDF6F0;
+  --color-burnt-orange-light: #F7E5D9;
+
+  --color-editorial-border: #E4E4E8;
+  --color-editorial-subtle: #F0F0F4;
+  --color-muted-text: #5A5A62;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #F9F9FB;
+  color: #1A1A1E;
+  font-family: var(--font-sans);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F9F9FB;
+  color: #1A1A1E;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Custom Editorial Utilities */
+.bg-alabaster {
+  background-color: #F9F9FB;
+}
+
+.text-charcoal {
+  color: #1A1A1E;
+}
+
+.text-burnt-orange {
+  color: #C85A17;
+}
+
+.bg-burnt-orange {
+  background-color: #C85A17;
+}
+
+.border-burnt-orange {
+  border-color: #C85A17;
+}
+
+.border-editorial {
+  border-color: #E4E4E8;
+}
+
+/* Subtle animation classes */
+.transition-editorial {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}

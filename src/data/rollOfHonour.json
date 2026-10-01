@@ -1,0 +1,90 @@
+[
+  {
+    "id": "person-1",
+    "name": "Captain James Alexander Upton",
+    "rank": "Captain",
+    "regiment": "Royal Irish Rifles (13th Battalion)",
+    "conflict": "World War I",
+    "years": "1914 - 1916",
+    "location": "Templepatrick",
+    "status": "Fallen in Action",
+    "citation": "Awarded Military Cross for conspicuous gallantry during the Battle of the Somme. Led his company through heavy machine gun fire near Thiepval Wood."
+  },
+  {
+    "id": "person-2",
+    "name": "Sergeant William John Patterson",
+    "rank": "Sergeant",
+    "regiment": "Royal Inniskilling Fusiliers",
+    "conflict": "World War I",
+    "years": "1915 - 1918",
+    "location": "Dunadry & Templepatrick",
+    "status": "Served with Honour",
+    "citation": "Mentioned in Despatches for extraordinary bravery in maintaining field communications under direct artillery barrage at Ypres."
+  },
+  {
+    "id": "person-3",
+    "name": "Corporal Thomas Henry Loughridge",
+    "rank": "Corporal",
+    "regiment": "Royal Ulster Rifles (2nd Battalion)",
+    "conflict": "World War II",
+    "years": "1939 - 1944",
+    "location": "Templepatrick",
+    "status": "Fallen in Action",
+    "citation": "Fell during the Normandy Campaign while securing vital bridgehead crossings near Caen. Remembered with pride on the Bayeux Memorial."
+  },
+  {
+    "id": "person-4",
+    "name": "Leading Aircraftman Robert Vance",
+    "rank": "Leading Aircraftman",
+    "regiment": "Royal Air Force Volunteer Reserve",
+    "conflict": "World War II",
+    "years": "1941 - 1945",
+    "location": "Templepatrick",
+    "status": "Served with Honour",
+    "citation": "Served with Coastal Command protecting Atlantic convoys. Maintained Radar systems across northern air bases."
+  },
+  {
+    "id": "person-5",
+    "name": "Private Edward Gibson",
+    "rank": "Private",
+    "regiment": "Machine Gun Corps",
+    "conflict": "World War I",
+    "years": "1916 - 1918",
+    "location": "Six Mile Water Valley",
+    "status": "Served with Honour",
+    "citation": "Demonstrated steadfast courage at Messines Ridge. Wounded in action and returned to Templepatrick after victory."
+  },
+  {
+    "id": "person-6",
+    "name": "Staff Sergeant David Millar",
+    "rank": "Staff Sergeant",
+    "regiment": "Ulster Defence Regiment",
+    "conflict": "Home Service",
+    "years": "1972 - 1991",
+    "location": "Templepatrick District",
+    "status": "Served with Honour",
+    "citation": "Awarded General Service Medal. Served two decades protecting local communities across County Antrim with unwavering dedication."
+  },
+  {
+    "id": "person-7",
+    "name": "Sister Margaret Campbell",
+    "rank": "Sister / Nursing Officer",
+    "regiment": "Queen Alexandra's Imperial Military Nursing Service",
+    "conflict": "World War II",
+    "years": "1940 - 1945",
+    "location": "Templepatrick",
+    "status": "Served with Honour",
+    "citation": "Rendered essential medical service in field hospitals across North Africa and Italy, caring for wounded Allied servicemen."
+  },
+  {
+    "id": "person-8",
+    "name": "Lieutenant Samuel Bell",
+    "rank": "Lieutenant",
+    "regiment": "Royal Artillery (8th Ulster Anti-Aircraft Regiment)",
+    "conflict": "World War II",
+    "years": "1939 - 1943",
+    "location": "Templepatrick",
+    "status": "Served with Honour",
+    "citation": "Defended airspace during the Blitz and served in the Western Desert Campaign. Recognized for cool leadership under fire."
+  }
+]

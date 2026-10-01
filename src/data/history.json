@@ -1,0 +1,68 @@
+[
+  {
+    "id": "castle-upton",
+    "title": "Castle Upton & The Upton Estate",
+    "subtitle": "The Historic Gateway of Templepatrick",
+    "year": "1611",
+    "period": "17th - 19th Century",
+    "category": "Architectural Heritage",
+    "summary": "Originally built on the site of a 13th-century Priory of Saint John, Castle Upton became the seat of the Upton family (Viscounts Templetown). Its grand fortified gateway and Robert Adam-designed additions define the architectural skyline of Templepatrick.",
+    "content": "Castle Upton stands at the heart of Templepatrick's history. Granted to Sir Arthur Chichester and later sold to Captain Henry Upton in 1611, the castle played a pivotal role in the local plantation and defence of the Six Mile Water valley. In 1788, the famed Neo-Classical architect Robert Adam was commissioned to remodel the castle, leaving a legacy of rare Irish Georgian design. The surrounding estate grounds and mausoleum remain an enduring symbol of the village's rich heritage.",
+    "tags": ["Architecture", "Heritage", "Robert Adam", "Local History"]
+  },
+  {
+    "id": "six-mile-water",
+    "title": "Six Mile Water Valley",
+    "subtitle": "Cradle of Agriculture, Industry & Early Gatherings",
+    "year": "1600s",
+    "period": "17th Century Onwards",
+    "category": "Geography & Landscape",
+    "summary": "Flowing from Ballyboley Forest into Lough Neagh, the Six Mile Water river provided vital water power for Templepatrick's linen mills, corn mills, and community settlements.",
+    "content": "The river takes its name from being six miles from Antrim town along the old military track. In 1625, the Six Mile Water Revival swept through the valley, laying the foundation for strong spiritual and community ties in County Antrim. Over the centuries, the riverbank provided fertile land for agriculture and driven waterwheels for local trade, connecting Templepatrick to Dunadry and Doagh.",
+    "tags": ["Landscape", "River Valley", "Community", "Early Settlement"]
+  },
+  {
+    "id": "old-coach-road",
+    "title": "The Old Coach Road & Turnpike",
+    "subtitle": "Connecting Belfast to Antrim & the North",
+    "year": "1750",
+    "period": "18th - 19th Century",
+    "category": "Trade & Transport",
+    "summary": "Templepatrick was a key coaching stop on the main turnpike road between Belfast and Derry, lined with historic inns, blacksmith forges, and toll houses.",
+    "content": "Before modern highways, stagecoaches carrying mail, linen, and travellers rattled along the Old Coach Road through Templepatrick. The village offered rest for horses and passengers at local inns. This strategic position along the main artery of County Antrim made Templepatrick a bustling hub for news, trade, and cultural gatherings across the 18th and 19th centuries.",
+    "tags": ["Transport", "Coaching Road", "Trade", "18th Century"]
+  },
+  {
+    "id": "pattersons-spade-mill",
+    "title": "Patterson's Spade Mill",
+    "subtitle": "The Last Working Water-Driven Spade Mill in Britain & Ireland",
+    "year": "1919",
+    "period": "Industrial Era",
+    "category": "Industrial Heritage",
+    "summary": "Nestled just outside Templepatrick, Patterson's Spade Mill preserves centuries of hand-forged toolmaking powered entirely by the river's waterwheel.",
+    "content": "For generations, Irish blacksmiths forged specialized spade patterns for every county and soil type. Patterson's Spade Mill, now protected by the National Trust, stands as a testament to the supreme craftsmanship of Templepatrick workmen. The heavy tilt hammer, driven by a massive wooden waterwheel, still strikes red-hot iron, maintaining a living link to Ireland's industrial past.",
+    "tags": ["National Trust", "Blacksmithing", "Watermill", "Craftsmanship"]
+  },
+  {
+    "id": "dr-lavinia-loughridge",
+    "title": "Dr. Lavinia Loughridge (1930–2014)",
+    "subtitle": "Pioneering Nephrologist & Templepatrick Visionary",
+    "year": "1930",
+    "period": "20th Century Medical Pioneer",
+    "category": "Local Figures",
+    "summary": "Born in Templepatrick, Dr. Lavinia Loughridge became one of Britain and Ireland's leading renal physicians, pioneering modern dialysis and kidney care.",
+    "content": "Educated locally before attending Queen's University Belfast, Dr. Loughridge broke ground for women in medicine during the mid-20th century. Appointed consultant nephrologist at Westminster Hospital in London, she authored seminal medical textbooks and spearheaded advanced renal replacement therapy. Throughout her distinguished global career, she retained a deep affection for her home village of Templepatrick.",
+    "tags": ["Pioneer", "Medicine", "Queen's University", "Distinguished Local"]
+  },
+  {
+    "id": "lol-466-war-memorial",
+    "title": "War Memorial Orange Hall & L.O.L. No. 466",
+    "subtitle": "A Century of Fellowship, Remembrance & Community Service",
+    "year": "1923",
+    "period": "1910s - Present",
+    "category": "Lodge & Memorial",
+    "summary": "Templepatrick Loyal Orange Lodge No. 466 erected the War Memorial Orange Hall as a permanent sanctuary of remembrance for local brethren and countrymen who served.",
+    "content": "Built following the Great War, Templepatrick War Memorial Orange Hall stands as both a place of brotherhood and a central community hall for the village. Dedicated to the memory of local men and women who served in the Armed Forces, L.O.L. 466 continues to maintain the hall with pride, hosting cultural events, historical lectures, and civic meetings while preserving local heritage.",
+    "tags": ["Remembrance", "Lodge 466", "War Memorial", "Community"]
+  }
+]

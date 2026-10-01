@@ -1,0 +1,64 @@
+{
+  "hallName": "Templepatrick War Memorial Orange Hall",
+  "location": "Antrim Road, Templepatrick, Co. Antrim, BT39 0AP",
+  "tagline": "A historic, beautifully restored venue for community events, weddings, meetings & cultural functions.",
+  "capacities": {
+    "mainHallSeated": 160,
+    "mainHallStanding": 220,
+    "supperRoom": 50,
+    "committeeRoom": 25
+  },
+  "facilities": [
+    {
+      "name": "Main Function Hall",
+      "description": "Spacious hall featuring original polished timber flooring, high vaulted ceiling acoustics, adjustable dimmable ambient lighting, and integrated stage area.",
+      "icon": "building"
+    },
+    {
+      "name": "Commercial Kitchen & Servery",
+      "description": "Fully equipped modern kitchen with double stainless steel catering sinks, commercial warming ovens, hot water urns, prep tables, and hatch servery into the supper room.",
+      "icon": "utensils"
+    },
+    {
+      "name": "Modern Audiovisual Suite",
+      "description": "HD ceiling projector with automated drop-down screen, wireless lapel & handheld microphones, Bluetooth audio connectivity, and speech amplification.",
+      "icon": "volume-2"
+    },
+    {
+      "name": "Accessibility & Parking",
+      "description": "Step-free ramped entrance, accessible toilet facilities, wide doorway access throughout, and on-site tarmac parking for 45 vehicles plus street parking.",
+      "icon": "accessibility"
+    }
+  ],
+  "rates": [
+    {
+      "category": "Community & Charitable Events",
+      "rate": "£25 / hour",
+      "details": "For registered charities, local youth groups, and non-profit community meetings."
+    },
+    {
+      "category": "Private Functions & Parties",
+      "rate": "£40 / hour",
+      "details": "Birthdays, anniversaries, family gatherings, and evening receptions (minimum 3 hours)."
+    },
+    {
+      "category": "Corporate & Conference Hire",
+      "rate": "£180 / full day",
+      "details": "Includes full access to AV equipment, committee room, and kitchen facilities."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can we bring our own caterers?",
+      "answer": "Yes! Hirers are welcome to bring external caterers or prepare food on-site using our commercial kitchen."
+    },
+    {
+      "question": "Is alcohol permitted on the premises?",
+      "answer": "Alcohol permissions are granted subject to prior lodge committee approval and appropriate temporary licensing where required."
+    },
+    {
+      "question": "How do we arrange a viewing before booking?",
+      "answer": "You can fill out our online booking inquiry form or contact the Hall Convenor directly to schedule a viewing."
+    }
+  ]
+}

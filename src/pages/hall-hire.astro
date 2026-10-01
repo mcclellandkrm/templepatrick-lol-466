@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BookingForm from '../components/BookingForm.astro';
+import hallData from '../data/hallDetails.json';
+---
+
+<Layout
+  title="Hall Hire & Facilities | Templepatrick War Memorial Hall"
+  description="Book Templepatrick War Memorial Hall for weddings, community meetings, private parties, and corporate functions."
+  currentPath="/hall-hire"
+>
+
+  <!-- Page Header Banner -->
+  <section class="bg-[#141417] text-white py-16 border-b border-[#C85A17]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center md:text-left">
+      <div class="inline-block px-3 py-1 bg-[#C85A17]/20 border border-[#C85A17]/40 text-[#C85A17] text-xs font-semibold uppercase tracking-widest rounded">
+        Community & Event Hire
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white">
+        Templepatrick War Memorial Hall
+      </h1>
+      <p class="text-base md:text-lg text-gray-300 max-w-3xl font-light">
+        A historic, beautifully maintained venue in County Antrim available for private functions, community meetings, and cultural gatherings.
+      </p>
+    </div>
+  </section>
+
+  <!-- Venue Showcase & Key Specs -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    
+    <!-- Visual Feature & Spec Bar -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Photo Showcase (7 cols) with Real Photos -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-lg overflow-hidden border border-[#E4E4E8] shadow-sm">
+          <img src="/images/memorial_hall.jpg" alt="Templepatrick War Memorial Hall Exterior" class="w-full h-64 object-cover" />
+          <div class="p-3 bg-white text-xs font-serif font-bold text-[#1A1A1E]">
+            War Memorial Hall Front Facade
+          </div>
+        </div>
+        <div class="rounded-lg overflow-hidden border border-[#E4E4E8] shadow-sm">
+          <img src="/images/Macmillan_cancer)support.jpg" alt="Community Function Event" class="w-full h-64 object-cover" />
+          <div class="p-3 bg-white text-xs font-serif font-bold text-[#1A1A1E]">
+            Community & Charity Functions
+          </div>
+        </div>
+      </div>
+
+      <!-- Capacity & Specs Highlights (5 cols) -->
+      <div class="lg:col-span-5 bg-white border border-[#E4E4E8] rounded-lg p-6 md:p-8 space-y-6 shadow-sm">
+        <h3 class="font-serif text-2xl font-bold text-[#1A1A1E]">
+          Venue Specifications
+        </h3>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-4 bg-[#F9F9FB] rounded border border-[#E4E4E8]">
+            <span class="block text-2xl font-bold font-serif text-[#C85A17]">160</span>
+            <span class="text-xs text-[#5A5A62] uppercase tracking-wider font-semibold">Seated Dining</span>
+          </div>
+          <div class="p-4 bg-[#F9F9FB] rounded border border-[#E4E4E8]">
+            <span class="block text-2xl font-bold font-serif text-[#1A1A1E]">220</span>
+            <span class="text-xs text-[#5A5A62] uppercase tracking-wider font-semibold">Standing Capacity</span>
+          </div>
+          <div class="p-4 bg-[#F9F9FB] rounded border border-[#E4E4E8]">
+            <span class="block text-2xl font-bold font-serif text-[#1A1A1E]">50</span>
+            <span class="text-xs text-[#5A5A62] uppercase tracking-wider font-semibold">Supper Room</span>
+          </div>
+          <div class="p-4 bg-[#F9F9FB] rounded border border-[#E4E4E8]">
+            <span class="block text-2xl font-bold font-serif text-[#C85A17]">45+</span>
+            <span class="text-xs text-[#5A5A62] uppercase tracking-wider font-semibold">On-site Parking</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 text-xs text-[#1A1A1E]">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Fully step-free accessible entrance & disabled WC</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Commercial kitchen with warming ovens & servery</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Integrated stage with HD ceiling projector & sound suite</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Detailed Facilities Grid -->
+    <div class="space-y-8">
+      <div class="border-b border-[#E4E4E8] pb-4">
+        <h2 class="font-serif text-3xl font-bold text-[#1A1A1E]">
+          Facilities & Equipment Included
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {hallData.facilities.map((fac) => (
+          <div class="bg-white border border-[#E4E4E8] rounded-lg p-6 space-y-2 shadow-sm">
+            <h3 class="font-serif text-xl font-bold text-[#1A1A1E] flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#C85A17]"></span>
+              {fac.name}
+            </h3>
+            <p class="text-xs md:text-sm text-[#5A5A62] leading-relaxed">
+              {fac.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Hire Rates Grid -->
+    <div class="space-y-8">
+      <div class="border-b border-[#E4E4E8] pb-4">
+        <h2 class="font-serif text-3xl font-bold text-[#1A1A1E]">
+          Hire Rates & Categories
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {hallData.rates.map((rate) => (
+          <div class="bg-white border border-[#E4E4E8] hover:border-[#C85A17] transition-all rounded-lg p-6 space-y-4 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif text-lg font-bold text-[#1A1A1E]">
+                {rate.category}
+              </h3>
+              <div class="font-serif text-3xl font-bold text-[#C85A17] my-2">
+                {rate.rate}
+              </div>
+              <p class="text-xs text-[#5A5A62]">
+                {rate.details}
+              </p>
+            </div>
+            <a href="#booking-section" class="text-xs font-bold uppercase tracking-wider text-[#1A1A1E] hover:text-[#C85A17] pt-2">
+              Inquire For This Category →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Interactive Booking Form Component -->
+    <BookingForm />
+
+    <!-- Frequently Asked Questions -->
+    <div class="space-y-6 bg-white border border-[#E4E4E8] rounded-lg p-6 md:p-8 shadow-sm">
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1E]">
+        Frequently Asked Questions
+      </h3>
+
+      <div class="space-y-4">
+        {hallData.faqs.map((faq) => (
+          <div class="p-4 bg-[#F9F9FB] rounded border border-[#E4E4E8] space-y-1">
+            <h4 class="font-serif font-bold text-base text-[#1A1A1E]">
+              Q: {faq.question}
+            </h4>
+            <p class="text-xs text-[#5A5A62]">
+              {faq.answer}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </section>
+
+</Layout>

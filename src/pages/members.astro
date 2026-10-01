@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MemberLogin from '../components/MemberLogin.astro';
+---
+
+<Layout
+  title="Members Portal | Templepatrick L.O.L. No. 466"
+  description="Secure access portal for brethren of Templepatrick Loyal Orange Lodge No. 466."
+  currentPath="/members"
+>
+
+  <!-- Page Header Banner -->
+  <section class="bg-[#141417] text-white py-16 border-b border-[#C85A17]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center md:text-left">
+      <div class="inline-block px-3 py-1 bg-[#C85A17]/20 border border-[#C85A17]/40 text-[#C85A17] text-xs font-semibold uppercase tracking-widest rounded">
+        Lodge Internal Access
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white">
+        Brethren & Members Portal
+      </h1>
+      <p class="text-base md:text-lg text-gray-300 max-w-3xl font-light">
+        Access internal meeting circulars, lodge resources, and hall committee announcements for Templepatrick L.O.L. No. 466.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Login & Dashboard Container -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <MemberLogin />
+  </section>
+
+</Layout>
