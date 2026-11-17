@@ -30,6 +30,15 @@
   p { margin: 0 0 12px; }
   .when { font-weight: 600; color: #14254a; }
   a { color: #1f4a33; font-weight: 600; }
+  .bank {
+    margin: 18px 0 18px; padding: 16px 18px;
+    background: #f6efdc; border: 1px solid #c9a24b; border-radius: 5px;
+    text-align: left;
+  }
+  .bank h2 { font-family: "Playfair Display", Georgia, serif; color: #14254a; font-size: 20px; margin: 0 0 10px; text-align: center; }
+  .bank dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0; }
+  .bank dt { color: #6b6457; font-size: 15px; }
+  .bank dd { margin: 0; font-weight: 600; color: #24211c; font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
@@ -38,6 +47,20 @@
     <h1>Thank you, your booking is in</h1>
     <p>We have your places and main course choices.</p>
     <p class="when">Saturday 5th December, dinner at 7:30pm<br>Templepatrick War Memorial Orange Hall</p>
+    <p><strong>Payment is due by the lodge meeting on Thursday 3rd December</strong>, by cash or bank transfer. Adults are £25 each and children come free.</p>
+
+    <!-- BANK DETAILS. Shown only on this page, after someone has booked. -->
+    <section class="bank" aria-labelledby="bank-title">
+      <h2 id="bank-title">To pay by bank transfer</h2>
+      <dl>
+        <dt>Account name</dt><dd>Templepatrick LOL</dd>
+        <dt>Bank</dt><dd>Danske Bank</dd>
+        <dt>Sort code</dt><dd>95-02-02</dd>
+        <dt>Account number</dt><dd>71139010</dd>
+        <dt>Reference</dt><dd>Your surname + XMAS</dd>
+      </dl>
+    </section>
+
     <p>We look forward to seeing you.</p>
     <p><a href="/christmas-dinner/">Make another booking</a></p>
   </main>

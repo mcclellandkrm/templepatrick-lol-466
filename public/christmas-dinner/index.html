@@ -93,6 +93,28 @@
   }
   .facts li + li::before { content: "★"; color: var(--gold); margin-right: 18px; }
   .intro { margin: 8px 0 22px; color: var(--muted); }
+
+  /* Menu card */
+  .menu {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 18px 20px 6px;
+    margin: 0 0 6px;
+  }
+  .menu h2 { text-align: center; margin-bottom: 14px; }
+  .menu dl { margin: 0; }
+  .menu dt {
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+  }
+  .menu dd { margin: 2px 0 14px; color: var(--ink); }
+  .menu dd span { display: block; }
+  .menu .note { color: var(--muted); font-size: 15px; }
+
   hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
   h2 {
     font-family: "Playfair Display", Georgia, serif;
@@ -103,6 +125,7 @@
   .row { display: grid; gap: 16px; grid-template-columns: 1fr; margin-bottom: 16px; }
   @media (min-width: 600px) { .row.two { grid-template-columns: 1fr 1fr; } }
   label, legend { display: block; font-weight: 600; margin-bottom: 5px; }
+  legend { font-family: "Playfair Display", Georgia, serif; font-size: 19px; color: var(--navy); padding: 0; }
   .opt { font-weight: 400; color: var(--muted); }
   input[type=text], input[type=email], input[type=tel], select, textarea {
     width: 100%;
@@ -119,10 +142,10 @@
     outline-offset: 1px;
     border-color: var(--gold);
   }
-  fieldset { border: 0; padding: 0; margin: 0 0 16px; }
-  .hint { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
-  .mains { display: grid; gap: 10px; }
-  .main {
+  fieldset { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+  .hint { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+  .choices > .choice + .choice { margin-top: 10px; }
+  .choice {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -132,7 +155,10 @@
     border-radius: 5px;
     padding: 10px 12px 10px 14px;
   }
-  .main label { margin: 0; }
+  .choice label { margin: 0; }
+  .choice label small { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+  .choice.sub { margin-left: 22px; background: #fdfaf2; }
+  .choice.sub label { font-weight: 400; }
   .stepper { display: flex; align-items: center; gap: 6px; flex: none; }
   .stepper button {
     width: 40px; height: 40px;
@@ -181,6 +207,40 @@
   .submit:hover { background: #74141b; }
   .small { font-size: 14px; color: var(--muted); margin: 14px 0 0; }
   .hp { position: absolute; left: -9999px; }
+
+  /* Key dates */
+  .dates {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    margin: 0 0 18px;
+  }
+  @media (min-width: 600px) { .dates { grid-template-columns: 1fr 1fr; } }
+  .dates > div {
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    padding: 10px 14px;
+  }
+  .dates-label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+  }
+  .dates strong { display: block; color: var(--burgundy); font-size: 18px; }
+  .dates-note { display: block; color: var(--muted); font-size: 14px; }
+  .closed {
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .closed h2 { color: var(--burgundy); }
+  .closed p { margin: 0; }
 </style>
 </head>
 <body>
@@ -196,9 +256,55 @@
     <ul class="facts">
       <li>Saturday 5th December</li>
       <li>Dinner at 7:30pm</li>
-      <li>£25 per head</li>
+      <li>£25 per adult</li>
+      <li>Children free</li>
     </ul>
-    <p class="intro">Templepatrick War Memorial Orange Hall. Fill in the form below to book your places and choose your main courses.</p>
+    <p class="intro">Templepatrick War Memorial Orange Hall. Fill in the form below to book your places and choose a main course and dessert for each guest.</p>
+
+    <!-- KEY DATES. If these change, also update BOOKINGS_CLOSE in the script at the bottom. -->
+    <section class="dates" aria-label="Key dates">
+      <div>
+        <span class="dates-label">Bookings close</span>
+        <strong>Sunday 29th November</strong>
+      </div>
+      <div>
+        <span class="dates-label">Payment due by</span>
+        <strong>Thursday 3rd December</strong>
+        <span class="dates-note">Cash or bank transfer, by the lodge meeting. Bank details are shown once you have booked.</span>
+      </div>
+    </section>
+
+    <!-- Shown instead of the form once bookings have closed. -->
+    <div class="closed" id="closed" hidden>
+      <h2>Bookings are now closed</h2>
+      <p>Thank you to everyone who booked. If you need to change a booking, please contact the lodge.</p>
+    </div>
+
+    <!-- MENU (display only). Keep this in step with the choices further down. -->
+    <section class="menu" aria-labelledby="menu-title">
+      <h2 id="menu-title">Menu</h2>
+      <dl>
+        <dt>Soup</dt>
+        <dd><span>Vegetable broth</span></dd>
+        <dt>Mains</dt>
+        <dd>
+          <span>Beef</span>
+          <span>Turkey and ham</span>
+          <span>Nut roast (vegetarian)</span>
+          <span class="note">Beef and turkey can both be made gluten free.</span>
+        </dd>
+        <dt>Desserts</dt>
+        <dd>
+          <span>Pavlova</span>
+          <span>Christmas pudding and custard</span>
+          <span>Maud's ice cream for younger guests</span>
+        </dd>
+        <dt>To finish</dt>
+        <dd><span>Tea and coffee</span></dd>
+      </dl>
+    </section>
+
+    <hr>
 
     <!--
       NETLIFY FORM
@@ -234,11 +340,11 @@
       <hr>
 
       <h2>Your party</h2>
-      <div class="row">
+      <!-- Up to 10 guests per booking (MAX_PARTY in the script). Bigger groups can book twice. -->
+      <div class="row two">
         <div>
-          <label for="guests">Number of guests in total <span class="opt">(including yourself)</span></label>
-          <!-- To allow bigger parties, add more <option> lines here. -->
-          <select id="guests" name="guests" required>
+          <label for="adults">Adults <span class="opt">(including yourself)</span></label>
+          <select id="adults" name="adults" required>
             <option value="" selected disabled>Please choose</option>
             <option>1</option>
             <option>2</option>
@@ -252,51 +358,115 @@
             <option>10</option>
           </select>
         </div>
+        <div>
+          <label for="children">Children <span class="opt">(free)</span></label>
+          <select id="children" name="children">
+            <option selected>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+          </select>
+        </div>
       </div>
+      <input type="hidden" name="total-guests" id="total-guests" value="">
+      <p class="hint">Up to 10 guests per booking. For a bigger group, please make a second booking. Everyone starts with vegetable broth. Then choose one main course and one dessert for each guest, children included.</p>
 
-      <fieldset>
+      <!--
+        CHOICES
+        Each <div class="choice">...</div> block is one menu option with a counter.
+        To change the menu: edit the label text and the id/name of a block.
+        To add an option: copy a whole block and give it a new id and name.
+      -->
+      <fieldset class="choices" id="mains" data-noun="main" data-plural="mains">
         <legend>Main courses</legend>
-        <p class="hint">Tell us how many of each main your party would like.</p>
 
-        <!--
-          MAIN COURSE OPTIONS
-          To change the menu: edit the label text and the name="" of each block.
-          To add an option, copy one whole <div class="main">...</div> block and
-          give it a new id and name. Nothing else needs to change.
-        -->
-        <div class="mains" id="mains">
-          <div class="main">
-            <label for="main-turkey">Turkey</label>
-            <div class="stepper">
-              <button type="button" data-step="-1" aria-label="One fewer turkey">−</button>
-              <input type="number" id="main-turkey" name="main-turkey" value="0" min="0" max="10" inputmode="numeric">
-              <button type="button" data-step="1" aria-label="One more turkey">+</button>
-            </div>
-          </div>
-          <div class="main">
-            <label for="main-beef">Beef</label>
-            <div class="stepper">
-              <button type="button" data-step="-1" aria-label="One fewer beef">−</button>
-              <input type="number" id="main-beef" name="main-beef" value="0" min="0" max="10" inputmode="numeric">
-              <button type="button" data-step="1" aria-label="One more beef">+</button>
-            </div>
-          </div>
-          <div class="main">
-            <label for="main-vegetarian">Vegetarian option</label>
-            <div class="stepper">
-              <button type="button" data-step="-1" aria-label="One fewer vegetarian">−</button>
-              <input type="number" id="main-vegetarian" name="main-vegetarian" value="0" min="0" max="10" inputmode="numeric">
-              <button type="button" data-step="1" aria-label="One more vegetarian">+</button>
-            </div>
+        <div class="choice">
+          <label for="main-beef">Beef</label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer beef">−</button>
+            <input type="number" id="main-beef" name="main-beef" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more beef">+</button>
           </div>
         </div>
-        <p class="tally" id="tally" role="status" aria-live="polite">Choose your number of guests first.</p>
+        <div class="choice sub">
+          <label for="main-beef-gf">Beef, gluten free</label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer gluten free beef">−</button>
+            <input type="number" id="main-beef-gf" name="main-beef-gluten-free" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more gluten free beef">+</button>
+          </div>
+        </div>
+
+        <div class="choice">
+          <label for="main-turkey">Turkey and ham</label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer turkey and ham">−</button>
+            <input type="number" id="main-turkey" name="main-turkey-and-ham" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more turkey and ham">+</button>
+          </div>
+        </div>
+        <div class="choice sub">
+          <label for="main-turkey-gf">Turkey and ham, gluten free</label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer gluten free turkey and ham">−</button>
+            <input type="number" id="main-turkey-gf" name="main-turkey-and-ham-gluten-free" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more gluten free turkey and ham">+</button>
+          </div>
+        </div>
+
+        <div class="choice">
+          <label for="main-nut-roast">Nut roast <small>Vegetarian option</small></label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer nut roast">−</button>
+            <input type="number" id="main-nut-roast" name="main-nut-roast" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more nut roast">+</button>
+          </div>
+        </div>
+
+        <p class="tally" id="mains-tally" role="status" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="choices" id="desserts" data-noun="dessert" data-plural="desserts">
+        <legend>Desserts</legend>
+
+        <div class="choice">
+          <label for="dessert-pavlova">Pavlova</label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer pavlova">−</button>
+            <input type="number" id="dessert-pavlova" name="dessert-pavlova" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more pavlova">+</button>
+          </div>
+        </div>
+        <div class="choice">
+          <label for="dessert-pudding">Christmas pudding and custard</label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer Christmas pudding">−</button>
+            <input type="number" id="dessert-pudding" name="dessert-christmas-pudding" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more Christmas pudding">+</button>
+          </div>
+        </div>
+        <div class="choice">
+          <label for="dessert-ice-cream">Maud's ice cream <small>For younger guests</small></label>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="One fewer ice cream">−</button>
+            <input type="number" id="dessert-ice-cream" name="dessert-mauds-ice-cream" value="0" min="0" max="10" inputmode="numeric">
+            <button type="button" data-step="1" aria-label="One more ice cream">+</button>
+          </div>
+        </div>
+
+        <p class="tally" id="desserts-tally" role="status" aria-live="polite"></p>
       </fieldset>
 
       <div class="row">
         <div>
-          <label for="dietary">Any special dietary requirements <span class="opt">(optional)</span></label>
-          <textarea id="dietary" name="dietary-requirements" placeholder="e.g. allergies, gluten free, and which guest it applies to"></textarea>
+          <label for="dietary">Any other dietary requirements <span class="opt">(optional)</span></label>
+          <textarea id="dietary" name="dietary-requirements" placeholder="e.g. allergies, and which guest it applies to. For gluten free, choose a gluten free main above."></textarea>
         </div>
       </div>
       <div class="row">
@@ -321,60 +491,103 @@
 
 <script>
 (function () {
-  var PRICE = 25; // price per head in pounds
+  var PRICE = 25;      // price per adult in pounds (children free)
+  var MAX_PARTY = 10;  // most guests allowed on one booking
+  // The form hides itself from this moment (midnight at the end of Sunday 29th November).
+  var BOOKINGS_CLOSE = new Date('2026-11-30T00:00:00Z');
+
   var form = document.getElementById('booking');
-  var guests = document.getElementById('guests');
-  var tally = document.getElementById('tally');
-  var inputs = Array.prototype.slice.call(document.querySelectorAll('#mains input[type=number]'));
+  var adults = document.getElementById('adults');
+  var children = document.getElementById('children');
 
-  function val(i) { var n = parseInt(i.value, 10); return isNaN(n) || n < 0 ? 0 : n; }
-  function chosen() { return inputs.reduce(function (s, i) { return s + val(i); }, 0); }
-
-  function update() {
-    var g = parseInt(guests.value, 10) || 0;
-    var c = chosen();
-    inputs.forEach(function (i) { i.max = g || 10; });
-
-    document.getElementById('total').textContent = '£' + (g * PRICE);
-    document.getElementById('total-label').textContent = g ? 'Total for ' + g + (g === 1 ? ' guest' : ' guests') : 'Total';
-    document.getElementById('total-due').value = g ? '£' + (g * PRICE) : '';
-
-    tally.className = 'tally';
-    var msg = '';
-    if (!g) {
-      tally.textContent = 'Choose your number of guests first.';
-    } else if (c === g) {
-      tally.textContent = 'All ' + g + (g === 1 ? ' main' : ' mains') + ' chosen.';
-      tally.classList.add('ok');
-    } else if (c < g) {
-      tally.textContent = c + ' of ' + g + ' mains chosen. ' + (g - c) + ' still to pick.';
-      msg = 'Please choose a main course for each guest.';
-    } else {
-      tally.textContent = c + ' mains chosen for ' + g + (g === 1 ? ' guest' : ' guests') + '. Please remove ' + (c - g) + '.';
-      tally.classList.add('bad');
-      msg = 'You have chosen more mains than guests.';
-    }
-    inputs[0].setCustomValidity(msg);
+  if (new Date() >= BOOKINGS_CLOSE) {
+    form.hidden = true;
+    document.getElementById('closed').hidden = false;
+    return;
   }
 
-  document.getElementById('mains').addEventListener('click', function (e) {
+  function counts() {
+    var a = parseInt(adults.value, 10) || 0;
+    var c = parseInt(children.value, 10) || 0;
+    return { adults: a, children: c, total: a ? a + c : 0 };
+  }
+
+  var groups = ['mains', 'desserts'].map(function (id) {
+    var el = document.getElementById(id);
+    return {
+      noun: el.getAttribute('data-noun'),
+      plural: el.getAttribute('data-plural'),
+      inputs: Array.prototype.slice.call(el.querySelectorAll('input[type=number]')),
+      tally: document.getElementById(id + '-tally')
+    };
+  });
+
+  function val(i) { var n = parseInt(i.value, 10); return isNaN(n) || n < 0 ? 0 : n; }
+  function sum(g) { return g.inputs.reduce(function (s, i) { return s + val(i); }, 0); }
+  function word(g, n) { return n === 1 ? g.noun : g.plural; }
+
+  function checkGroup(g, total) {
+    var c = sum(g), msg = '';
+    g.tally.className = 'tally';
+    g.inputs.forEach(function (i) { i.max = total || 10; });
+    if (!total) {
+      g.tally.textContent = 'Choose the number of adults first.';
+      msg = 'Please choose the number of adults.';
+    } else if (c === total) {
+      g.tally.textContent = 'All ' + total + ' ' + word(g, total) + ' chosen.';
+      g.tally.classList.add('ok');
+    } else if (c < total) {
+      g.tally.textContent = c + ' of ' + total + ' ' + g.plural + ' chosen. ' + (total - c) + ' still to pick.';
+      msg = 'Please choose a ' + g.noun + ' for each guest.';
+    } else {
+      g.tally.textContent = c + ' ' + word(g, c) + ' chosen for ' + total + (total === 1 ? ' guest' : ' guests') + '. Please remove ' + (c - total) + '.';
+      g.tally.classList.add('bad');
+      msg = 'You have chosen more ' + g.plural + ' than guests.';
+    }
+    g.inputs[0].setCustomValidity(msg);
+  }
+
+  function update() {
+    var n = counts();
+    var total = n.total;
+    groups.forEach(function (g) { checkGroup(g, total); });
+
+    children.setCustomValidity(n.adults + n.children > MAX_PARTY
+      ? 'Up to ' + MAX_PARTY + ' guests per booking. Please make a second booking for the rest.' : '');
+
+    var due = n.adults * PRICE;
+    var label = 'Total';
+    if (n.adults) {
+      label = 'Total for ' + n.adults + (n.adults === 1 ? ' adult' : ' adults');
+      if (n.children) label += ' (' + n.children + (n.children === 1 ? ' child' : ' children') + ' free)';
+    }
+    document.getElementById('total').textContent = '£' + due;
+    document.getElementById('total-label').textContent = label;
+    document.getElementById('total-due').value = n.adults ? '£' + due : '';
+    document.getElementById('total-guests').value = total || '';
+  }
+
+  form.addEventListener('click', function (e) {
     var b = e.target.closest('button[data-step]');
     if (!b) return;
     var input = b.parentNode.querySelector('input');
-    var g = parseInt(guests.value, 10) || 0;
+    var total = counts().total;
     var next = val(input) + parseInt(b.getAttribute('data-step'), 10);
     if (next < 0) next = 0;
-    if (g && next > g) next = g;
+    if (total && next > total) next = total;
     input.value = next;
     update();
   });
-  inputs.forEach(function (i) { i.addEventListener('input', update); });
-  guests.addEventListener('change', update);
+  groups.forEach(function (g) {
+    g.inputs.forEach(function (i) { i.addEventListener('input', update); });
+  });
+  adults.addEventListener('change', update);
+  children.addEventListener('change', update);
   form.addEventListener('submit', function (e) {
     update();
     if (!form.checkValidity()) {
       e.preventDefault();
-      tally.classList.add('bad');
+      groups.forEach(function (g) { if (g.inputs[0].validationMessage) g.tally.classList.add('bad'); });
       form.reportValidity();
     }
   });
